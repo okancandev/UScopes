@@ -1,0 +1,21 @@
+{
+    "name": "dev.okancan.uscopes",
+    "displayName": "UScopes",
+    "version": "0.0.9",
+    "unity": "2022.3",
+    "description": "Simple service provider solution for unity3d.",
+    "keywords": [
+        "unity",
+        "unity3d",
+        "okancandev",
+        "service provider",
+        "service locator"
+    ],
+    "dependencies": {},
+    "license": "MIT",
+    "homepage": "https://github.com/okancandev/uscopes.git",
+    "author": {
+      "name": "Okan Can Buğdacı",
+      "url": "https://github.com/uscopes"
+    }
+  }
