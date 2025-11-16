@@ -8,6 +8,10 @@ namespace Okancandev.UScopes
         public IReadOnlyDictionary<ServiceIdentifier, object> Services => _services;
         private readonly Dictionary<ServiceIdentifier, object> _services = new();
 
+        public Scope()
+        {
+        }
+
         public void Add(ServiceIdentifier identifier, object service) 
         {
             _services.Add(identifier, service);

@@ -64,6 +64,11 @@ namespace Okancandev.UScopes
 
         private static void ScopeKeyValidation(object owner)
         {
+            if (owner is Component)
+            {
+                throw new Exception("Components can not be used as custom scope key.");
+            }
+            
             if (owner is GameObject)
             {
                 throw new Exception("GameObjects can not be used as custom scope key.");

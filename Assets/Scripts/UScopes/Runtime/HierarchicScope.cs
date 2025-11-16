@@ -15,6 +15,8 @@ namespace Okancandev.UScopes
         public HierarchicScope(object owner, UScopesInstance uScopesInstance = null)
         {
             UScopesInstance = uScopesInstance ?? UScopes.DefaultInstance;
+            if (owner is Component component)
+                owner = component.gameObject;
             Owner = owner;
         }
 
