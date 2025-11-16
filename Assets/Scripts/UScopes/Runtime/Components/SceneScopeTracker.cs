@@ -12,7 +12,7 @@ namespace Okancandev.UScopes
         protected new void Awake()
         {
             UScopesInstance ??= UScopes.DefaultInstance;
-            var scope = UScopesInstance.GetOrCreateScope(GetOwnerObject());
+            var scope = UScopesInstance.CreateScope(GetOwnerObject());
             UScopesInstance.RegisterTrackerComponent(scope, this);
             
             foreach (var installer in Installers)
