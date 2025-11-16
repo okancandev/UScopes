@@ -24,6 +24,11 @@ namespace Okancandev.UScopes
         {
             return new HierarchicScope(scene);
         }
+        
+        public static HierarchicScope HierarchicScope(this MonoBehaviour behaviour)
+        {
+            return new HierarchicScope(behaviour.gameObject);
+        }
     }
 
     public static class UScopesGameObjectExtensions

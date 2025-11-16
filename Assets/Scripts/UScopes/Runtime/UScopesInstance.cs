@@ -154,10 +154,10 @@ namespace Okancandev.UScopes
 
         public void Destroy()
         {
-            foreach (var uScopesComponent in _activeComponents.Values)
+            foreach (var trackerComponent in _activeComponents.Values)
             {
-                uScopesComponent.DetachUScopesInstance(); //this ensures collection not modified in foreach
-                uScopesComponent.DestroySelfImmediate();
+                trackerComponent.DetachUScopesInstance(); //this ensures collection not modified in foreach
+                trackerComponent.DestroySelfImmediate();
             }
             _activeComponents.Clear();
             _scopes.Clear();
