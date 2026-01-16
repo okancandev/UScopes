@@ -21,14 +21,14 @@ namespace Okancandev.UScopes
             return UScopes.Global(createIfNotExist);
         }
         
-        public static HierarchicScope HierarchicScope(this Scene scene)
+        public static ScopeLookup ScopeLookup(this Scene scene)
         {
-            return new HierarchicScope(scene);
+            return new ScopeLookup(scene);
         }
         
-        public static HierarchicScope HierarchicScope(this MonoBehaviour behaviour)
+        public static ScopeLookup ScopeLookup(this MonoBehaviour behaviour)
         {
-            return new HierarchicScope(behaviour.gameObject);
+            return new ScopeLookup(behaviour.gameObject);
         }
     }
 
@@ -59,9 +59,9 @@ namespace Okancandev.UScopes
             return UScopes.Global(createIfNotExist);
         }
         
-        public static HierarchicScope HierarchicScope(this GameObject gameObject)
+        public static ScopeLookup ScopeLookup(this GameObject gameObject)
         {
-            return new HierarchicScope(gameObject);
+            return new ScopeLookup(gameObject);
         }
     }
 
@@ -92,9 +92,9 @@ namespace Okancandev.UScopes
             return UScopes.Global(createIfNotExist);
         }
         
-        public static HierarchicScope HierarchicScope(this Component component)
+        public static ScopeLookup ScopeLookup(this Component component)
         {
-            return new HierarchicScope(component);
+            return new ScopeLookup(component);
         }
     }
 
@@ -102,17 +102,17 @@ namespace Okancandev.UScopes
     {
         public static object Get(this MonoBehaviour behaviour, ServiceIdentifier identifier) 
         {
-            return behaviour.HierarchicScope().Get(identifier);
+            return behaviour.ScopeLookup().Get(identifier);
         }
         
         public static bool TryGet(this MonoBehaviour behaviour, ServiceIdentifier identifier, out object service) 
         {
-            return behaviour.HierarchicScope().TryGet(identifier, out service);
+            return behaviour.ScopeLookup().TryGet(identifier, out service);
         }
         
         public static bool TryGet<T>(this MonoBehaviour behaviour, ServiceIdentifier identifier, out T service) 
         {
-            return behaviour.HierarchicScope().TryGet(identifier, out service);
+            return behaviour.ScopeLookup().TryGet(identifier, out service);
         }
         
         public static object GetOrDefault(this MonoBehaviour behaviour, ServiceIdentifier identifier, object defaultValue = null) 

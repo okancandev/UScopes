@@ -7,17 +7,30 @@ using UnityEngine.SceneManagement;
 
 namespace Okancandev.UScopes
 {
-    public struct HierarchicScope
+    public ref struct ScopeLookup
     {
         private UScopesInstance UScopesInstance { get; set; }
         private object Owner { get; set; }
+
+        public static ScopeLookup Of(object owner, UScopesInstance uScopesInstance = null)
+        {
+            return new ScopeLookup(owner, uScopesInstance);
+        }
         
-        public HierarchicScope(object owner, UScopesInstance uScopesInstance = null)
+        public ScopeLookup(object owner, UScopesInstance uScopesInstance = null)
         {
             UScopesInstance = uScopesInstance ?? UScopes.DefaultInstance;
             if (owner is Component component)
                 owner = component.gameObject;
             Owner = owner;
+        }
+
+        public Scope Scope(bool createIfNotExist = true)
+        {
+            var scope = GetScope();
+            if (createIfNotExist && scope == null)
+                scope =  UScopesInstance.GlobalScope();
+            return scope;
         }
 
         private Scope GetScope()
@@ -63,6 +76,7 @@ namespace Okancandev.UScopes
             
             return null;
         }
+        
 
         private object NextOwner()
         {
